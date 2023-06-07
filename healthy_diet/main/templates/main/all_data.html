@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block title%}
+All Information
+{% endblock %}
+
+{% block topline%}
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" href="{% url 'home' %}">Main Page</a> 
+        </nav>
+    </div>
+{% endblock %}
+
+
+{% block mainbody %}
+    {% if food_per_day %}
+        {% for el in food_per_day %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.data }}</h3>
+                <p>{{ el.breakfast }}</p>
+                <p>{{ el.lunch }}</p>
+                <p>{{ el.dinner }}</p>
+                <p>{{ el.other_food }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1>DB is empty</h1>
+    {% endif %}
+{% endblock %}
