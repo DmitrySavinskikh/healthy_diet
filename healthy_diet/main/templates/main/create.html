@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Add new row
+{% endblock %}
+
+{% block topline %}
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" href="{% url 'home' %}">Main Page</a> 
+        </nav>
+    </div>
+{% endblock %}
+
+{% block mainbody %}
+    <h1>Create new entry</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.date}}<br>
+        {{form.breakfast}}<br>
+        {{form.lunch}}<br>
+        {{form.dinner}}<br>
+        {{form.other_food}}<br>
+        <pre></pre>
+        <button type="submit" class="btn btn-success">Add</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

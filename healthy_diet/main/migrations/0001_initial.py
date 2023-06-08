@@ -12,10 +12,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='FoorPerDay',
+            name='FoodPerDay',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('data', models.DateField()),
+                ('date', models.DateField()),
                 ('breakfast', models.CharField(max_length=150, verbose_name='Завтрак')),
                 ('lunch', models.CharField(max_length=150, verbose_name='Завтрак')),
                 ('dinner', models.CharField(max_length=150, verbose_name='Завтрак')),

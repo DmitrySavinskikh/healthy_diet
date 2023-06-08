@@ -1,7 +1,7 @@
 from django.db import models
 
-class FoorPerDay(models.Model):
-    data = models.DateField()
+class FoodPerDay(models.Model):
+    date = models.DateField()
     breakfast = models.CharField('breakfast', max_length=150)
     lunch = models.CharField('lunch', max_length=150)
     dinner = models.CharField('dinner', max_length=150)
