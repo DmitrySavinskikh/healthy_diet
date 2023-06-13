@@ -3,25 +3,25 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 
+def goto_firstpage(request):
+    return render(request, 'authenticate/first_page_login.html')
+
 def login_user(request):
-    print('YES1')
     if request.method == "POST":
-        print('YES2')
         username = request.POST["username"]
         password = request.POST["password"]
-        print('YES3')
         user = authenticate(request, username=username, password=password)
-        print('YES4')
         if user is not None:
-            print('YES5')
             login(request, user)
-            print('YES6')
             return redirect('home')
         else:
-            print('YES7')
             messages.success(request, ("It is not correct, Try again"))
-            return redirect('login_system')
+            return redirect('login_user')
     else:
-        print('YES8')
         messages.success(request, ("It is not correct, Try again"))
-        return render(request, 'authenticate/login_system.html', {})
+        return render(request, 'authenticate/login.html', {})
+    
+def logout_user(request):
+    logout(request)
+    messages.success(request, ("Yoy were logged out!"))
+    return redirect('home')

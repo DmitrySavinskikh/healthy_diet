@@ -11,11 +11,15 @@
         <a class="p-2 text-muted" href="{% url 'all_data' %}">Data about previous days</a>
         <a class="p-2 text-muted" href="{% url 'create' %}">Add data</a>
         <a class="p-2 text-muted" href="{% url 'login_system' %}">log in/log out</a>
+
     </nav>
     </div>
 {% endblock %}
 
 {% block mainbody %}
+    {% if user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>       
+    {% endif %}
     <h1>Main Page</h1>
     <p>This is main page, there are links with other pages</p>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title%}
+Login
+{% endblock %}
+
+{% block topline%}
+    <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between">
+            <a class="p-2 text-muted" href="{% url 'login_system' %}">Login/Logout system page</a> 
+        </nav>
+    </div>
+{% endblock %}
+
+{% block mainbody %}
+<h1>Logout</h1>
+{% endblock %}

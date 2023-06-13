@@ -4,10 +4,10 @@ from .forms import FoodPerDayForm
 
 
 def index(request):
-    return render(request, 'main/index.html')
+    return render(request, 'main/index.html', )
 
-def login_system(request):
-    return render(request, 'main/login_system.html')
+# def login_system(request):
+#     return render(request, 'authenticate/first_page_login.html')
 
 def all_data(request):
     food_per_day = FoodPerDay.objects.order_by('-date')[:7]
@@ -19,12 +19,9 @@ def create(request):
         if form.is_valid():
             form.save()
             return redirect('home')
-        # else:
-        #     error = 'Форма была неверной'
 
     form = FoodPerDayForm()
     dict_add = {
         'form': form
-        # 'error': error
     }
     return render(request, 'main/create.html', dict_add)
