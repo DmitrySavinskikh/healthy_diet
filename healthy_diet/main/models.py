@@ -8,7 +8,7 @@ class FoodPerDay(models.Model):
     other_food = models.CharField('other food', max_length=150)
 
     def __str__(self):
-        return str((self.data, self.breakfast, self.lunch, self.dinner, self.other_food))
+        return str((self.date, self.breakfast, self.lunch, self.dinner, self.other_food))
     
     class Meta:
         verbose_name = 'Food in day'
