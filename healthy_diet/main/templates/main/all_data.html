@@ -14,17 +14,21 @@ All Information
 
 
 {% block mainbody %}
-    {% if food_per_day %}
-        {% for el in food_per_day %}
-            <div class="alert alert-warning mt-2">
-                <h3>{{ el.date }}</h3>
-                <p>{{ el.breakfast }}</p>
-                <p>{{ el.lunch }}</p>
-                <p>{{ el.dinner }}</p>
-                <p>{{ el.other_food }}</p>
-            </div>
-        {% endfor %}
+    {% if user.is_authenticated %}
+        {% if food_per_day %}
+            {% for el in food_per_day %}
+                <div class="alert alert-warning mt-2">
+                    <h3>{{ el.date }}</h3>
+                    <p>{{ el.breakfast }}</p>
+                    <p>{{ el.lunch }}</p>
+                    <p>{{ el.dinner }}</p>
+                    <p>{{ el.other_food }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1>DB is empty</h1>
+        {% endif %}
     {% else %}
-        <h1>DB is empty</h1>
+    <p>You are not logged in</p>
     {% endif %}
 {% endblock %}

@@ -13,6 +13,7 @@ Add new row
 {% endblock %}
 
 {% block mainbody %}
+    {% if user.is_authenticated %}
     <h1>Create new entry</h1>
     <form method="post">
         {% csrf_token %}
@@ -25,4 +26,7 @@ Add new row
         <button type="submit" class="btn btn-success">Add</button>
         <span>{{ error }}</span>
     </form>
+    {% else %}
+    <p>You are not logged in</p>
+    {% endif %}
 {% endblock %}

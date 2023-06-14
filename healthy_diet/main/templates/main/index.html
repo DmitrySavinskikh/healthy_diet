@@ -18,10 +18,14 @@
 
 {% block mainbody %}
     {% if user.is_authenticated %}
-        <p>Welcome {{ user.username }} !!!</p>       
-    {% endif %}
     <h1>Main Page</h1>
+    <p>Welcome {{ user.username }} !!!</p>    
+    <p>This is main page, there are links with other pages</p>   
+    {% else %}
+    <h1>Main Page</h1>
+    <p>For more functional, please, log in.</p>
     <p>This is main page, there are links with other pages</p>
+    {% endif %}
 {% endblock %}
 
 
