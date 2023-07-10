@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 
-{% block title %}
-Add New Row
+{% block title%}
+Sugar Counting
 {% endblock %}
 
 {% block topline %}
@@ -14,16 +14,12 @@ Add New Row
 
 {% block mainbody %}
     {% if user.is_authenticated %}
-    <h1>Create new entry</h1>
+    <h1>Add new row for today</h1>
     <form method="post">
         {% csrf_token %}
-        {{form.date}}<br>
-        {{form.breakfast}}<br>
-        {{form.lunch}}<br>
-        {{form.dinner}}<br>
-        {{form.other_food}}<br>
+        {{form}}
         <pre></pre>
-        <button type="submit" class="btn btn-success">Add</button>
+        <input type="submit">
         <span>{{ error }}</span>
     </form>
     {% else %}

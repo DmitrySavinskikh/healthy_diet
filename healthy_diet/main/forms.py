@@ -1,5 +1,6 @@
 from .models import FoodPerDay
-from django.forms import ModelForm, DateInput, TextInput
+from .models import Sugar
+from django.forms import ModelForm, DateInput, TextInput, CheckboxInput
 
 
 class FoodPerDayForm(ModelForm):
@@ -26,5 +27,20 @@ class FoodPerDayForm(ModelForm):
             'other_food': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Other food'
+            }),
+        }
+
+class SugarCoutingForm(ModelForm):
+    class Meta:
+        model = Sugar
+        fields = ["date", "sugar"]
+        widgets = {
+            'date': DateInput(attrs={
+                'type': 'date',
+                'placeholder': 'Choose date'
+            }),
+            'sugar': CheckboxInput(attrs={
+                'class': 'required checkbox form-control', 
+                'placeholder': 'Did you eat sugar today?'
             }),
         }

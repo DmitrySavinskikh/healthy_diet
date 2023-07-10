@@ -1,13 +1,23 @@
 from django.shortcuts import render, redirect
 from .models import FoodPerDay
-from .forms import FoodPerDayForm
+from .forms import FoodPerDayForm, SugarCoutingForm
 
 
 def index(request):
     return render(request, 'main/index.html', )
 
-# def login_system(request):
-#     return render(request, 'authenticate/first_page_login.html')
+def sugar_counting(request):
+    if request.method == 'POST':
+        form = SugarCoutingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    
+    form = SugarCoutingForm()
+    dict_add = {
+        'form': form
+    }
+    return render(request, 'main/sugar_counting.html', dict_add)
 
 def all_data(request):
     food_per_day = FoodPerDay.objects.order_by('-date')[:7]

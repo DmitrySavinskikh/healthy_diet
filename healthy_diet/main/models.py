@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class FoodPerDay(models.Model):
     date = models.DateField()
     breakfast = models.CharField('breakfast', max_length=150)
@@ -13,3 +14,16 @@ class FoodPerDay(models.Model):
     class Meta:
         verbose_name = 'Food in day'
         verbose_name_plural = 'Food in days'
+
+class Sugar(models.Model):
+    date = models.DateField()
+    sugar = models.BooleanField()
+
+    def __str__(self):
+        return str((self.date, self.sugar))
+    
+    class Meta:
+        verbose_name = 'Sugar'
+        verbose_name_plural = 'Sugars'
+
+
