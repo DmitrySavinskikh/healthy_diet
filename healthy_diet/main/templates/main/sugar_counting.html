@@ -14,14 +14,27 @@ Sugar Counting
 
 {% block mainbody %}
     {% if user.is_authenticated %}
-    <h1>Add new row for today</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{form}}
-        <pre></pre>
-        <input type="submit">
-        <span>{{ error }}</span>
-    </form>
+        <h1>Add new row for today, click on the button if you ate sugar today or in another days</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <pre></pre>
+            <input type="submit">
+            <span>{{ error }}</span>
+        </form>
+        <br>
+        <h1>You haven't been eating sugar for {{ sugar_free_days }}</h1>
+        <h1>You can see all data about sugar tracking below</h1>
+        {% if sugar_all_data %}
+            {% for item in sugar_all_data %}
+                <div class="alert alert-warning mt-2">
+                    <h3>{{ item.date }}</h3>
+                    <p>{{ item.sugar }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1>DB is empty</h1>
+        {% endif %}
     {% else %}
     <p>You are not logged in</p>
     {% endif %}
